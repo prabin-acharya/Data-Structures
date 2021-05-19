@@ -14,7 +14,7 @@ using namespace std;
 
 class Node 
 {
-    public :
+    public:
     int number;
     Node *next;
 };
@@ -25,22 +25,22 @@ not a head node itself.Also we do not have any identity of linked list except th
 //Inserts an integer at end of list.
 void Insert(int data)    
 {
-    Node *temp1=new Node();
-    temp1->number=data;
-    temp1->next=NULL;
-    if(head==NULL)
+    Node *temp1 = new Node();
+    temp1->number = data;
+    temp1->next = NULL;
+    if(head == NULL)
     {
-        head=temp1;
+        head = temp1;
         return;
     }
 
-    Node *temp2=head;
-    while(temp2->next!=NULL)   //Vey imp to understand the differnce between temp!=NULL and temp->next!=NULL.
+    Node *temp2 = head;
+    while(temp2->next != NULL)   //Vey imp to understand the differnce between temp!=NULL and temp->next!=NULL.
     {
-        temp2=temp2->next;
+        temp2 = temp2->next;
     }
     //temp2 now stores the address of last node.
-    temp2->next=temp1;
+    temp2->next = temp1;
     /*Notice,how we inserted the node without assigning the changes to "head".This is due to we changed the address
     stored in last node through temp2.*/
 }
@@ -48,49 +48,49 @@ void Insert(int data)
 //Print all the elements in list
 void Print()            
 {
-    Node *temp=head;
-    cout<<"List is : "<<endl;
-    while(temp!=NULL)
+    Node *temp = head;
+    cout << "List is : ";
+    while(temp != NULL)
     {
-        cout<<" "<<temp->number;
-        temp=temp->next;
+        cout << " " << temp->number;
+        temp = temp->next;
     }
     //temp now stores NULL.
-    cout<<endl;
+    cout << endl;
 }
 
 //Deletes an integer at nth position
 void Delete(int n)
 {
-    Node *temp1=head;
-    if(n==1)
+    Node *temp1 = head;
+    if( n == 1)
     {
-        head=temp1->next;     //head now points to second node.
+        head = temp1->next;     //head now points to second node.
         delete temp1;
         /*Remember that,this deletes the memory(heap) allocated through "new".
          "temp1" is cleared from the memory(stack) when the function ends.*/
         return;
     }
-    for(int i=0;i<n-2;i++)
-        temp1=temp1->next;
+    for(int i = 0; i < n-2; i++)
+        temp1 = temp1->next;
     //temp1 points to (n-1)th node.
-    Node *temp2=temp1->next;    //nth node
-    temp1->next=temp2->next;    //(n+1)th node
+    Node *temp2 = temp1->next;    //nth node
+    temp1->next = temp2->next;    //(n+1)th node
     delete temp2;
 } 
 
 int main()
 {
-    head=NULL;      //empty list
+    head = NULL;      //empty list
     Insert(2);
     Insert(4);
     Insert(6);
     Insert(8);      //List : 2 4 6 8 
     Print();
     int n;
-    cout<<"Enter a position to delete : ";
-    cin>>n;
-    cout<<endl;
+    cout << "Enter a position to delete : ";
+    cin >> n;
     Delete(n);
     Print();
+    cout << endl;
 }

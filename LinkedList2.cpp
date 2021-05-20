@@ -1,4 +1,4 @@
-//Inserting a node at nth position of LInked List.
+//Inserting a node at nth position of Linked List.
 #include<iostream>
 using namespace std;
 
@@ -55,5 +55,6 @@ int main()
     Insert(4,2);    //List: 2,4
     Insert(5,1);    //List: 5,2,4
     Insert(7,2);    //List: 5,7,2,4 
+    Insert(100,5); 
     Print();
 }

@@ -1,11 +1,12 @@
-rough.cpp
-rough1.cpp
-rough2.cpp
-test.cpp
-
 *
 !/**/
 !*.*
+
+test.cpp
+test1.cpp
+test2.cpp
+
+.vscode/
 
 # Prerequisites
 *.d

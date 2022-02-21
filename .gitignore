@@ -1,7 +1,11 @@
 rough.cpp
 rough1.cpp
 rough2.cpp
-reough3.cpp
+test.cpp
+
+*
+!/**/
+!*.*
 
 # Prerequisites
 *.d

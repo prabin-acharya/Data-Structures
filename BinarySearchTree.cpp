@@ -48,6 +48,16 @@ BstNode *Insert(BstNode *root, int data)
 //     {
 //         (*root)->right = Insert((*root)->right, data);
 //     }
+
+// main(){
+// BstNode *root = NULL; // Creating an empty tree;
+// Insert(&root, 15);
+// Insert(&root, 20);
+// Insert(&root, 10);
+// Insert(&root, 25);
+// Insert(&root, 8);
+// Insert(&root, 12);
+// }
 // }
 
 bool Search(BstNode *root, int data)
@@ -62,6 +72,36 @@ bool Search(BstNode *root, int data)
         return Search(root->right, data);
 }
 
+int FindMin(BstNode *root)
+{
+    if (root == NULL)
+    {
+        cout << "Error: Treee is empty!\n";
+        return -1;
+    }
+
+    while (root->left != NULL)
+    {
+        root = root->left;
+    }
+    return root->data;
+}
+
+int FindMinRecursive(BstNode *root)
+{
+    if (root == NULL)
+    {
+        cout << "Error: Treee is empty!\n";
+        return -1;
+    }
+    else if (root->left == NULL)
+    {
+        return root->data;
+    }
+    // Search in left subtree
+    return FindMin(root->left);
+}
+
 int main()
 {
 
@@ -72,12 +112,9 @@ int main()
     root = Insert(root, 25);
     root = Insert(root, 8);
     root = Insert(root, 12);
-    // Insert(&root, 15);
-    // Insert(&root, 20);
-    // Insert(&root, 10);
-    // Insert(&root, 25);
-    // Insert(&root, 8);
-    // Insert(&root, 12);
+
+    int min = FindMin(root);
+    cout << "Min element in BST is: " << min << endl;
 
     int number;
     cout << "Enter number to be searched: ";

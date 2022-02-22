@@ -1,4 +1,5 @@
 // Binary Search Tree - Implementation in C++
+// Binary tree is the tree in which each node can have at most two children
 #include <iostream>
 using namespace std;
 
@@ -9,6 +10,7 @@ struct BstNode
     BstNode *right;
 };
 
+// Create a node
 BstNode *GetNewNode(int data)
 {
     BstNode *newNode = new BstNode();
@@ -17,6 +19,7 @@ BstNode *GetNewNode(int data)
     return newNode;
 }
 
+// Insert a node
 BstNode *Insert(BstNode *root, int data)
 {
     if (root == NULL)
@@ -34,6 +37,40 @@ BstNode *Insert(BstNode *root, int data)
     return root;
 }
 
+// Search an element in Tree
+bool Search(BstNode *, int);
+// Find Min element in BST iteratively
+int FindMin(BstNode *);
+// Find Min element in BST recursively
+int FindMinRecursive(BstNode *);
+// Find Height of the Tree
+int FindHeight(BstNode *);
+
+int main()
+{
+    BstNode *root = NULL; // Creating an empty tree;
+    root = Insert(root, 15);
+    root = Insert(root, 20);
+    root = Insert(root, 10);
+    root = Insert(root, 25);
+    root = Insert(root, 35);
+    root = Insert(root, 8);
+    root = Insert(root, 12);
+
+    int min = FindMin(root);
+    cout << FindHeight(root);
+
+    cout << "Min element in BST is: " << min << endl;
+    int number;
+    cout << "Enter number to be searched: ";
+    cin >> number;
+    if (Search(root, number) == true)
+        cout << "Found\n";
+    else
+        cout << "Not Found\n";
+}
+
+// Insert a node by passing root address
 // BstNode *Insert(BstNode **root, int data)
 // {
 //     if (*root == NULL)
@@ -60,6 +97,7 @@ BstNode *Insert(BstNode *root, int data)
 // }
 // }
 
+// Search an element in Tree
 bool Search(BstNode *root, int data)
 {
     if (root == NULL)
@@ -72,6 +110,7 @@ bool Search(BstNode *root, int data)
         return Search(root->right, data);
 }
 
+// Find Min element in BST iteratively
 int FindMin(BstNode *root)
 {
     if (root == NULL)
@@ -87,6 +126,7 @@ int FindMin(BstNode *root)
     return root->data;
 }
 
+// Find Min element in BST recursively
 int FindMinRecursive(BstNode *root)
 {
     if (root == NULL)
@@ -102,25 +142,11 @@ int FindMinRecursive(BstNode *root)
     return FindMin(root->left);
 }
 
-int main()
+int FindHeight(BstNode *root)
 {
 
-    BstNode *root = NULL; // Creating an empty tree;
-    root = Insert(root, 15);
-    root = Insert(root, 20);
-    root = Insert(root, 10);
-    root = Insert(root, 25);
-    root = Insert(root, 8);
-    root = Insert(root, 12);
+    if (root == NULL)
+        return -1;
 
-    int min = FindMin(root);
-    cout << "Min element in BST is: " << min << endl;
-
-    int number;
-    cout << "Enter number to be searched: ";
-    cin >> number;
-    if (Search(root, number) == true)
-        cout << "Found\n";
-    else
-        cout << "Not Found\n";
+    return max(FindHeight(root->left), FindHeight(root->right)) + 1;
 }

@@ -1,5 +1,7 @@
 // Binary Search Tree - Implementation in C++
-// Binary tree is the tree in which each node can have at most two children
+// - Binary tree is the tree in which each node can have at most two children
+// - Binary Search Tree is the Binary Tree in which for each node, value of all the nodes in the left subtree
+//      is lesser or equal  and value of all the nodes in right subtree is greater then root node
 #include <iostream>
 using namespace std;
 
